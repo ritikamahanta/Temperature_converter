@@ -1,51 +1,28 @@
 
-javascript
-let celsiusInput = document.querySelector('#celsius > input')
-let fahrenheitInput = document.querySelector('#fahrenheit > input')
-let kelvinInput = document.querySelector('#kelvin > input')
+const celciusEl = document.getElementById("Celcius");
+const fahrenheitEl = document.getElementById("Fahrenheit");
+const kelvinEl = document.getElementById("Kelvin");
 
-let btn = document.querySelector('.button button')
+function computeTemp(event) {
+    const currentValue = event.target.value;
 
+    switch (event.target.name) {
+        case "Celcius":
+            fahrenheitEl.value = (currentValue * 9 / 5) + 32;
+            kelvinEl.value = parseFloat(currentValue) + 273.15;
+            break;
 
-function roundNumber(number){
-    return Math.round(number*100)/100
+        case "Fahrenheit":
+            celciusEl.value = (currentValue - 32) * 5 / 9;
+            kelvinEl.value = (currentValue - 32) * 5 / 9 + 273.15;
+            break;
+
+        case "Kelvin":
+            celciusEl.value = currentValue - 273.15;
+            fahrenheitEl.value = (currentValue - 273.15) * 9 / 5 + 32;
+            break;
+
+        default:
+            break;
+    }
 }
-
-
-/* Celcius to Fahrenheit and Kelvin */
-celsiusInput.addEventListener('input', function(){
-    let cTemp = parseFloat(celsiusInput.value)
-    let fTemp = (cTemp*(9/5)) + 32
-    let kTemp = cTemp + 273.15
-
-    fahrenheitInput.value = roundNumber(fTemp)
-    kelvinInput.value = roundNumber(kTemp)
-})
-
-
-/* Fahrenheit to Celcius and Kelvin */
-fahrenheitInput.addEventListener('input', function(){
-    let fTemp = parseFloat(fahrenheitInput.value)
-    let cTemp = (fTemp - 32) * (5/9)
-    let kTemp = (fTemp -32) * (5/9) + 273.15
-
-    celsiusInput.value = roundNumber(cTemp)
-    kelvinInput.value = roundNumber(kTemp)
-})
-
-/* Kelvin to Celcius and Fahrenheit */
-kelvinInput.addEventListener('input', function(){
-    let kTemp = parseFloat(kelvinInput.value)
-    let cTemp = kTemp - 273.15
-    let fTemp = (kTemp - 273.15) * (9/5) + 32
-
-    celsiusInput.value = roundNumber(cTemp)
-    fahrenheitInput.value = roundNumber(fTemp)
-})
-
-
-btn.addEventListener('click', ()=>{
-    celsiusInput.value = ""
-    fahrenheitInput.value = ""
-    kelvinInput.value = ""
-})
