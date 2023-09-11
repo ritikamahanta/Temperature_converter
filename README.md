@@ -11,4 +11,7 @@ This is a simple temperature converter website created using HTML,CSS, and JavaS
 - Open 'index.html' in your web browser.
 - Enter a temperature value and select the desire unit.
 - Click the "Convert" button to see the converted temperature.
+
+#Screenshot
+
  
